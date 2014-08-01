@@ -28,10 +28,10 @@ module ActiveResource
 
       def decode(json)
         meta = super(json)
-        if meta.is_a?(Hash) && meta['total_pages']
+        if meta.is_a?(Hash) && meta['pages']
           list = PagedArray.new(meta[collection_name])
 
-          list.total_pages  = meta['total_pages']
+          list.total_pages  = meta['pages']
           list.current_page = meta['current_page']
 
           list
